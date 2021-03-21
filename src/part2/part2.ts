@@ -10,12 +10,14 @@ const isVowel: ((ch : string) => boolean) = (ch) =>
 
 const countVowelsRec : ((str : string, c : number) => number) = (str, c) =>
     //Finish recursion if string is empty
-    str == '' ? c :
-    //Check if vowel
-    isVowel(str[0]) ? countVowelsRec(str.substring(1), c) : countVowelsRec(str.substring(1), c + 1);
-
-
-
+    str == '' ? c : (
+        //Check if vowel
+        isVowel(str[0]) ?
+            //Call if next char is vowel
+            countVowelsRec(str.substring(1), c + 1) :
+            //Call if next char is not vowel
+            countVowelsRec(str.substring(1), c + 1)
+    );
 
 /* Question 1 */
 export const countVowels : ((str : string) => number) = (str) =>
