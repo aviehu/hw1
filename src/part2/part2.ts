@@ -2,8 +2,24 @@ import * as R from "ramda";
 import { pipe } from "ramda";
 const stringToArray = R.split("");
 
+const isVowel: ((ch : string) => boolean) = (ch) =>
+    ch === 'a' || ch === 'A' || ch === 'e' || ch === 'E' ||
+    ch === 'i' || ch === 'I' || ch === 'o' || ch === 'O' ||
+    ch === 'u' || ch === 'U'
+
+
+const countVowelsRec : ((str : string, c : number) => number) = (str, c) =>
+    //Finish recursion if string is empty
+    str == '' ? c :
+    //Check if vowel
+    isVowel(str[0]) ? countVowelsRec(str.substring(1), c) : countVowelsRec(str.substring(1), c + 1);
+
+
+
+
 /* Question 1 */
-export const countVowels = undefined;
+export const countVowels : ((str : string) => number) = (str) =>
+    countVowelsRec(str, 0);
 
 /* Question 2 */
 export const runLengthEncoding : ((str : string) => string) = str => {
