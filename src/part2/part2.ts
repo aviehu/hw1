@@ -16,7 +16,7 @@ const countVowelsRec : ((str : string, c : number) => number) = (str, c) =>
             //Call if next char is vowel
             countVowelsRec(str.substring(1), c + 1) :
             //Call if next char is not vowel
-            countVowelsRec(str.substring(1), c + 1)
+            countVowelsRec(str.substring(1), c)
     );
 
 /* Question 1 */
