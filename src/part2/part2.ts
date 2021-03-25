@@ -66,5 +66,3 @@ export const isPaired: (str: string) => boolean = (str) => {
         return a;
     },'').length == 0;
 }
-
-console.log(isPaired('(]'));
