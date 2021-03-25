@@ -7,3 +7,4 @@ export const bind<S, A, B> : ((state : State<S, A>, f: ((x: A) => State<S, B>)) 
         (([tmpS : S, val: A]) => f(val)(tmpS)),
         ((tmpS : S) => state(tmpS))
     );
+
