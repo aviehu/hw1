@@ -45,19 +45,20 @@ export const runLengthEncoding : ((str : string) => string) = str => {
     return f(str);
 }
 
-console.log(runLengthEncoding('aaaabbbccd'));
 
 /* Question 3 */
 export const isPaired: (str: string) => boolean = (str) => {
     const open = ['(', '{', '['];
     const close = [ ')', '}', ']']
     return stringToArray(str).reduce((a,b) => {
-        console.log(a);
         if (open.includes(b)) {
             return a + b;
         }
         if (close.includes(b)) {
-            if ((b === ')' && a[a.length-1] !== '(') || (b === '}' && a[a.length-1] !== '{') || (b === '[' && a[a.length-1] !== ']')) {
+            if (a.length == 0) {
+                return a + 'Err';
+            }
+            else if ((b === ')' && a[a.length-1] !== '(') || (b === '}' && a[a.length-1] !== '{') || (b === ']' && a[a.length-1] !== '[')) {
                 return a + 'Err'
             }
             else return a.slice(0, -1)
@@ -65,3 +66,5 @@ export const isPaired: (str: string) => boolean = (str) => {
         return a;
     },'').length == 0;
 }
+
+console.log(isPaired('(]'));
